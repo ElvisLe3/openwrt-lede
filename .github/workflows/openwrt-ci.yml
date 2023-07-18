@@ -8,6 +8,9 @@
 name: Elvis
 
 on:
+  push:
+    branches: 
+      - master
   schedule:
     - cron: 0 20 * * *
 
