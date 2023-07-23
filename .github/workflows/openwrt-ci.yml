@@ -8,8 +8,11 @@
 name: OpenWrt-CI
 
 on:
+  push:
+    branches: 
+      - master
   schedule:
-    - cron: 0 20 * * *
+    - cron: 0 4 * * 0
 
 permissions:
   contents: read
@@ -58,7 +61,7 @@ jobs:
           touch ./.config
           cat >> .config <<EOF
           #
-          # ========================固件定制部分========================
+          # ========================Firmware customization========================
           #
           CONFIG_TARGET_x86=y
           CONFIG_TARGET_x86_64=y
@@ -454,7 +457,7 @@ jobs:
           # CONFIG_SAMBA4_SERVER_VFSX is not set
           CONFIG_SAMBA4_SERVER_WSDD2=y
           #
-          # ========================固件定制部分结束========================
+          # ========================End of firmware customization========================
           #
           EOF
           sed -i 's/^[ \t]*//g' ./.config
